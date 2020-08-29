@@ -1,15 +1,15 @@
 <ion-item>
   <ion-label position="floating">E-Mail</ion-label>
-  <ion-input type="text" id="email"></ion-input>
+  <ion-input type="text" id="email" autocomplete="email" autofocus=true placeholder='email@example.com' required=true></ion-input>
 </ion-item>
 <br>
 <ion-item>
   <ion-label position="floating">Password</ion-label>
-  <ion-input type="text" id="pass"></ion-input>
+  <ion-input type="password" id="pass" autocomplete="current-password" placeholder='password' required=true></ion-input>
 </ion-item>
 
 <br>
 
-<ion-button (click)="login()" expand="block" fill="clear" shape="round">
+<ion-button (click)="login()" expand="block" fill="outline" shape="round">
   Log in
 </ion-button>

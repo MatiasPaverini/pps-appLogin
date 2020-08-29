@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     let username:string = (document.getElementById('email') as HTMLInputElement).value;
     let password:string = (document.getElementById('pass') as HTMLInputElement).value;
 
-    if(this.isValidACcount(username, password)) {
+    if(this.isValidAccount(username, password)) {
       console.log("Auth exitoso!");
     }
     else {
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  isValidACcount(user:string, pass:string) :boolean {
+  isValidAccount(user:string, pass:string) :boolean {
     this.flag = false;
     if(this.isValidUser(user) && this.isValidPass(pass)){
       this.flag = true;
@@ -53,6 +53,10 @@ export class LoginComponent implements OnInit {
       flag = true;
     }
     return flag;
+  }
+
+  getFireBaseUser(user:string) {
+
   }
 
 }
