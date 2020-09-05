@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="floating">E-Mail</ion-label>
+    <ion-input type="text" id="email" autocomplete="email" autofocus=true placeholder='email@example.com' [(ngModel)]="username" required=true></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" id="pass" autocomplete="current-password" placeholder='password' (keydown.enter) = "submit()" [(ngModel)]="password" required=true></ion-input>
+  </ion-item>
+  
+  <br>
+  
+  <ion-button (click)="register()" expand="block" fill="outline" shape="round">
+    Register
+  </ion-button>
+  <ion-button (click)="login()" expand="block" fill="outline" shape="round">
+    Login
+  </ion-button>
+  
+  <ion-item-divider>
+    <p>{{message}}</p>
+  </ion-item-divider>
+  
+  <router-outlet></router-outlet>
+
+</ion-content>

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Login
+      Welcome
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,11 @@
   </ion-header>
 
   <div id="container">
-    <app-login></app-login> 
+    <!--<app-login></app-login> -->
+
+    <ion-button (click)="logout()" expand="block" fill="solid" shape="round">
+      LOG OUT
+    </ion-button>
   </div>
 </ion-content>
 

@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { isGeneratedFile } from '@angular/compiler/src/aot/util';
 import { Router } from "@angular/router";
 
-import { LoginService } from "../../services/login.service";
+import { LoginService } from "../services/login.service";
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginPage implements OnInit {
 
   username:string;
 
@@ -37,6 +36,11 @@ export class LoginComponent implements OnInit {
 
   }
 
+
+  public submit() {
+    this.getFireBaseUser(this.username, this.password);
+  }
+
   private createUserFireBase(email:string, password:string) {
 
     this.loginService.register(email, password).then(res => {
@@ -56,7 +60,10 @@ export class LoginComponent implements OnInit {
     this.loginService.login(user, pass).then(res => {
       console.log(res);
       this.message = "Autenticación con éxito.";
-      this.router.navigate(['dsfghj'])
+      this.username = "";
+      this.password = "";
+      this.message = "";
+      this.router.navigate(['home'])
     }).catch(res => {
       console.log(res.message);
         
