@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { isGeneratedFile } from '@angular/compiler/src/aot/util';
+import { Router } from "@angular/router";
+
+import { LoginService } from "../../services/login.service";
 
 @Component({
   selector: 'app-login',
@@ -12,51 +15,53 @@ export class LoginComponent implements OnInit {
 
   password:string;
 
+  message: string = "";
+
   flag:boolean;
 
-  constructor() { }
+  constructor(public loginService: LoginService, private router: Router) { }
 
   ngOnInit() {}
 
-  login() :void {
+  public login() :void {
+
+    this.getFireBaseUser(this.username, this.password);
     
-    let username:string = (document.getElementById('email') as HTMLInputElement).value;
-    let password:string = (document.getElementById('pass') as HTMLInputElement).value;
-
-    if(this.isValidAccount(username, password)) {
-      console.log("Auth exitoso!");
-    }
-    else {
-      console.log("Auth failed!");
-    }
   }
 
-  isValidAccount(user:string, pass:string) :boolean {
-    this.flag = false;
-    if(this.isValidUser(user) && this.isValidPass(pass)){
-      this.flag = true;
-    }
-    return this.flag;
+
+  public register() :void {
+  
+    this.createUserFireBase(this.username, this.password);
+    this.router.navigate([''])
+
   }
 
-  isValidUser(user:string) :boolean {
-    let flag:boolean = false;
-    if(user.includes('@')) {
-      flag = true;
-    }
-    return flag;
+  private createUserFireBase(email:string, password:string) {
+
+    this.loginService.register(email, password).then(res => {
+      console.log(res);
+
+      this.message = "Registro exitoso.";
+
+    }).catch(res => {
+      console.log(res);
+
+      this.message = "Error en registro";
+    });
   }
 
-  isValidPass(pass:string) :boolean {
-    let flag:boolean = false;
-    if(pass.length > 4) {
-      flag = true;
-    }
-    return flag;
-  }
+  private getFireBaseUser(user:string, pass:string) {
 
-  getFireBaseUser(user:string) {
-
+    this.loginService.login(user, pass).then(res => {
+      console.log(res);
+      this.message = "Autenticación con éxito.";
+      this.router.navigate(['dsfghj'])
+    }).catch(res => {
+      console.log(res.message);
+        
+      this.message = "Email / contraseña inválido.";
+    });
   }
 
 }
