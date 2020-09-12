@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
   public register() :void {
   
     this.createUserFireBase(this.username, this.password);
-    this.router.navigate([''])
+    
 
   }
 
@@ -47,6 +47,7 @@ export class LoginPage implements OnInit {
       console.log(res);
 
       this.message = "Registro exitoso.";
+      this.router.navigate(['']);
 
     }).catch(res => {
       console.log(res);
