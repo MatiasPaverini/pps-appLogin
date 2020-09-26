@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Router } from "@angular/router";
 
 import { LoginService } from "../services/login.service";
@@ -10,6 +10,7 @@ import { LoginService } from "../services/login.service";
 })
 export class HomePage {
 
+  @Output() title = 'Home';
   constructor(private account: LoginService, private router: Router) {}
 
   logout() {

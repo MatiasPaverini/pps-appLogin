@@ -10,6 +10,8 @@ import { LoginService } from "../services/login.service";
 })
 export class LoginPage implements OnInit {
 
+  public title: string = "Login";
+
   username:string;
 
   password:string;
@@ -32,7 +34,6 @@ export class LoginPage implements OnInit {
   public register() :void {
   
     this.createUserFireBase(this.username, this.password);
-    
 
   }
 
@@ -71,5 +72,14 @@ export class LoginPage implements OnInit {
       this.message = "Email / contraseña inválido.";
     });
   }
+
+  /**
+   * fill
+   */
+  public fill() {
+    this.username = "user1@example.com";
+    this.password = "user1234";
+  }
+
 
 }

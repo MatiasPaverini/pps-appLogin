@@ -1,8 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [title]="title"></app-header>
 
 <ion-content>
 
@@ -28,6 +24,12 @@
   <ion-item-divider>
     <p>{{message}}</p>
   </ion-item-divider>
+  
+  <br>
+
+  <ion-button (click)="fill()" id="admin1" expand="block" fill="outline" shape="round">
+    ADMIN
+  </ion-button>
   
   <router-outlet></router-outlet>
 
